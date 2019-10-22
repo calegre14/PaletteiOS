@@ -11,8 +11,13 @@ import UIKit
 class ColorPaletteView: UIView {
     var colors: [UIColor] {
         didSet {
-            
+            buildColorBricks()
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setUpViews()
     }
     
     init(colors: [UIColor] = [], frame: CGRect = .zero) {

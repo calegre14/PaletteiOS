@@ -12,7 +12,7 @@ enum UnsplashRoute {
     
     static let baseUrl = "https://api.unsplash.com/"
     //TODO: - Input Unsplash Client Id
-    static let clientId = ""
+    static let clientId = "3b3d4803a2dd219d0a87c834e15551338ed40c778943a7b68d7849eae9c52202"
     
     case random
     case featured
@@ -32,7 +32,7 @@ enum UnsplashRoute {
     var queryItems: [URLQueryItem] {
         var items = [
             URLQueryItem(name: "client_id", value: UnsplashRoute.clientId),
-            URLQueryItem(name: "count", value: "10")
+            URLQueryItem(name: "count", value: "100")
         ]
         switch self {
         case .random, .featured:

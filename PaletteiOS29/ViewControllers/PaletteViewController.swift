@@ -22,10 +22,20 @@ class PaletteViewController: UIViewController {
     }
     
     var photos: [UnsplashPhoto] = []
+    
+    override func loadView() {
+        super.loadView()
+        addAllSubviews()
+        setUpStackView()
+        constrainView()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureTableView()
+        searchForCatogory(.featured)
+        activateButtons()
+        selectButton(featuredButton)
     }
     
     //MARK:- API Functions
@@ -67,7 +77,7 @@ class PaletteViewController: UIViewController {
     let buttonStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
+        stackView.distribution = .fillEqually
         stackView.alignment = .fill
         return stackView
     }()
@@ -146,5 +156,15 @@ extension PaletteViewController: UITableViewDelegate, UITableViewDataSource {
         cell.photo = photo
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let imageViewSpacing: CGFloat = (view.frame.width - (2 * SpacingConstants.outerHorizontalPadding))
+        let textLabelSpacing: CGFloat = SpacingConstants.oneLineElementHeight
+        let colorPaletteSpacing: CGFloat = SpacingConstants.twoLineElementHeight
+        let outerVerticalSpacing: CGFloat = (2 * SpacingConstants.outerVerticalPadding)
+        let innerVerticalSpacing: CGFloat = (2 * SpacingConstants.verticalObjectBuffer)
+        
+        return imageViewSpacing + textLabelSpacing + outerVerticalSpacing + innerVerticalSpacing + colorPaletteSpacing
     }
 }

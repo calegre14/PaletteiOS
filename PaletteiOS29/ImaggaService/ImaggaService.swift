@@ -14,7 +14,7 @@ class ImaggaService{
     static let shared = ImaggaService()
     private init() {}
     
-    static let baseURLPath = "http://api.imagga.com/v2"
+    static let baseURLPath = "https://api.imagga.com/v2"
     //TODO: - Input API Key
     static let authenticationToken = "Basic YWNjX2U3NDNhOTZhMjUwMTBjMDoxNTc3MmIzMjA0MDYyYjEzMzQ1ZjM4NzZkZGQ1OWRiOA=="
     
